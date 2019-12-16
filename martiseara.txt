@@ -1,0 +1,620 @@
+// OpenCVApplication.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "common.h"
+
+
+void testOpenImage()
+{
+	char fname[MAX_PATH];
+	while (openFileDlg(fname))
+	{
+		Mat src;
+		src = imread(fname);
+		imshow("image", src);
+		waitKey();
+	}
+}
+void additive_change(){
+	Mat_<uchar> img = imread("Images/cameraman.bmp",
+		CV_LOAD_IMAGE_GRAYSCALE);
+
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j<img.cols; j++){
+			if (200 + img(i, j) > 255)
+			{
+				img(i, j) = 255;
+			}
+			else
+				if (200 + img(i, j) <0)
+				{
+					img(i, j) = 0;
+				}
+				else
+					img(i, j) = 200 + img(i, j);
+		}
+	}
+	imshow("negative image", img);
+	waitKey(0);
+}
+/*void graychange(){
+Mat_<Vec3b> img = imread("Images/cameraman.bmp",
+CV_LOAD_IMAGE_GRAYSCALE);
+unsigned char a=20;
+for (int i = 0; i<img.rows; i++){
+for (int j = 0; j<img.cols; j++){
+{
+Vec3b pixel = img.at< Vec3b>(i, j);
+unsigned char B = pixel[0];
+unsigned char G = pixel[1];
+unsigned char R = pixel[2];
+if (B = R = G)
+{
+//image is grey here
+if (B + a > 255)
+{
+B = 255;
+}
+else
+{
+B += a;
+
+}
+R = B;
+G = B;
+}
+}
+}
+}
+imshow("negative image", img);
+waitKey(0);
+}
+*/
+void multiplicative_change(){
+	Mat_<uchar> img = imread("Images/cameraman.bmp",
+		CV_LOAD_IMAGE_GRAYSCALE);
+	float a = 7.5;
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j<img.cols; j++){
+			if (a* img(i, j) > 255)
+			{
+				img(i, j) = 255;
+			}
+			else
+				if (200 + img(i, j) <0)
+				{
+					img(i, j) = 0;
+				}
+				else
+					img(i, j) = a * img(i, j);
+		}
+	}
+	imshow("negative image", img);
+	waitKey(0);
+	imwrite("Images/cameraman1.bmp", img);
+	waitKey(0);
+}
+
+void make_image(){
+	Mat   img(256, 256, CV_8UC3);
+	Vec3b white = Vec3b(255, 255, 255);
+	Vec3b red = Vec3b(0, 0, 255);
+	Vec3b green = Vec3b(0, 255, 0);
+	Vec3b yellow = Vec3b(0, 255, 255);
+	for (int i = 0; i<img.rows; i++)
+		for (int j = 0; j<img.cols; j++)
+		{
+			if (i<127 && j<127)
+				img.at< Vec3b>(i, j) = white;
+			else
+				if (i<127 && j>127)
+					img.at< Vec3b>(i, j) = red;
+				else
+					if (i>127 && j<127)
+						img.at< Vec3b>(i, j) = green;
+					else
+						img.at< Vec3b>(i, j) = yellow;
+
+		}
+
+	imshow("created image", img);
+	waitKey(0);
+
+}
+
+void inverse1(){
+	Mat   img(3, 3, CV_32FC1);
+
+	for (int i = 0; i<img.rows; i++)
+		for (int j = 0; j<img.cols; j++)
+		{
+			img.at<float>(i, j) = i + 1;
+
+		}
+	//print
+	printf("\n");
+	for (int i = 0; i < img.rows; i++){
+		printf("\n");
+		for (int j = 0; j < img.cols; j++){
+			printf(" %f", img.at<float>(i, j));
+		}
+
+	}
+	Mat inverse = img.inv();
+	//print
+	printf("\n");
+	for (int i = 0; i < inverse.rows; i++){
+		printf("\n");
+		for (int j = 0; j < inverse.cols; j++){
+			printf(" %f", inverse.at<float>(i, j));
+		}
+
+	}
+
+
+	double m[3][3] = { { 1, 0, 0 }, { 0, 2, 0 }, { 0, 0, 4 } };
+	Mat M = Mat(3, 3, CV_64F, m).inv();
+	//print
+	printf("\n");
+	for (int i = 0; i < M.rows; i++){
+		printf("\n");
+		for (int j = 0; j < M.cols; j++){
+			printf(" %f", M.at<double>(i, j));
+		}
+
+	}
+	//imshow("created image", img);
+	//waitKey(0);
+
+}
+
+void rotate(){
+	Mat_<uchar> img = imread("Images/cameraman.bmp",
+		CV_LOAD_IMAGE_GRAYSCALE);
+	Mat_<uchar> img1(img.cols, img.rows);
+
+
+	for (int i = 0; i < img1.rows; i++){
+		for (int j = 0; j < img1.cols; j++){
+			if (i < img1.rows / 2 && j<img1.cols / 2)
+			{
+
+				img1(i, j) = img(img.rows - 1 - i, j);
+			}
+			else
+				if (i>img.rows / 2 && j<img.cols / 2)
+				{
+					img1(i, j) = img(i, img.cols - j - 1);
+				}
+				else
+					if (i > img.rows / 2 && j > img.cols / 2)
+					{
+						img1(i, j) = img(img.rows - i - 1, j);
+					}
+					else
+						img1(i, j) = img(i, img.cols - j - 1);
+		}
+	}
+	//	for (int i = 0; i < img1.rows; i++){
+	//	for (int j = 0; j < img1.cols; j++){
+	//	img1(img.cols - j - 1, i) = img(i, j);
+	//}
+	//}
+	imshow("negative image", img1);
+	waitKey(0);
+}
+
+void transform_vec3b_to_3_gray_scale_images(){
+	Mat_<Vec3b> img = imread("Images/flowers_24bits.bmp",1);
+	Mat_<uchar> imgH(img.rows,img.cols) ;
+	Mat_<uchar> imgS(img.rows, img.cols);
+	Mat_<uchar> imgU(img.rows, img.cols);
+	
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j < img.cols; j++){
+			imgH(i, j)=img(i,j)[0];
+		}
+	}
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j < img.cols; j++){
+			imgS(i, j) = img(i, j)[1];
+		}
+	}
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j < img.cols; j++){
+			imgU(i, j) = img(i, j)[2];
+		}
+	}
+	imshow("H image", imgH);
+	
+	imshow("S image", imgS);
+	
+	imshow("U image", imgU);
+	waitKey(0);
+	
+}
+void transform_vec3b_to_gray_scale(){
+	Mat_<Vec3b> img = imread("Images/flowers_24bits.bmp", 1);
+	Mat_<uchar> imgG(img.rows, img.cols);
+
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j < img.cols; j++){
+			imgG(i, j) = ((img(i, j)[0]+img(i,j)[1]+img(i,j)[1]))/3;
+		}
+	}
+	
+	
+	imshow("U image", imgG);
+	waitKey(0);
+
+}
+void grayscale_to_blach_and_white(){
+	int threshhold = 127;
+	Mat_<uchar> img = imread("Images/cameraman.bmp",
+		CV_LOAD_IMAGE_GRAYSCALE);
+	for (int i = 0; i<img.rows; i++){
+		for (int j = 0; j<img.cols; j++){
+			if (img(i, j) > threshhold)
+			{
+				img(i, j) = 0;
+			}
+			else
+				img(i, j) = 255;
+		}
+	}
+	imshow("negative image", img);
+	waitKey(0);
+	
+
+}
+void transform_vec3b_to_HSU(){
+
+	Mat_<Vec3b> img = imread("Images/flowers_24bits.bmp", 1);
+	Mat_<uchar> imgH(img.rows, img.cols);
+	Mat_<uchar> imgS(img.rows, img.cols);
+	Mat_<uchar> imgU(img.rows, img.cols);
+
+	for (int i = 0; i < img.rows; i++){
+		for (int j = 0; j < img.cols; j++){
+		
+			float r = (float)img(i, j)[2] / 255; // r : the normalized R component
+			float g = (float)img(i, j)[1] / 255; // g : the normalized G component
+			float b = (float)img(i, j)[0] / 255; // b : the normalized B component
+			// Attention: please declare all variables as float
+			// If you have declared R as uchar, you have to use a cast: r = (float)R/255 !!!
+			float M = max(max(r, g), b); //Attention: there is a default macro in Visual C for max and min, but
+			float m = min(min(r, g), b); //it only takes two parameters (no compiler error if you provide three)
+			float C = M - m;
+		Value:
+			float V = M,S,H;
+		Saturation:
+			if(V != 0)
+				S = C / V;
+			else // grayscale
+				S = 0;
+
+		Hue:
+			if(C != 0) {
+				if (M == r) H = 60 * (g - b) / C;
+				if (M == g) H = 120 + 60 * (b - r) / C;
+				if (M == b) H = 240 + 60 * (r - g) / C;
+			}
+			else // grayscale
+				H = 0;
+			if(H < 0)
+				H = H + 360;
+
+			imgH(i, j) = H * 255 / 360;
+			imgS(i, j) = S * 255;
+			imgU(i, j) = V * 255;
+
+		}
+	}
+
+	imshow("H image", imgH);
+
+	imshow("S image", imgS);
+
+	imshow("U image", imgU);
+	waitKey(0);
+
+}
+bool check_if_inside_image(Mat img,int i,int j){
+	
+	if (i < img.rows && j < img.cols)
+		if (i >= 0 && j >= 0)
+			return true;
+	
+	return false;
+
+
+}
+
+
+
+
+void testOpenImagesFld()
+{
+	char folderName[MAX_PATH];
+	if (openFolderDlg(folderName) == 0)
+		return;
+	char fname[MAX_PATH];
+	FileGetter fg(folderName, "bmp");
+	while (fg.getNextAbsFile(fname))
+	{
+		Mat src;
+		src = imread(fname);
+		imshow(fg.getFoundFileName(), src);
+		if (waitKey() == 27) //ESC pressed
+			break;
+	}
+}
+
+
+void testResize()
+{
+	char fname[MAX_PATH];
+	while (openFileDlg(fname))
+	{
+		Mat src;
+		src = imread(fname);
+		Mat dst1, dst2;
+		//without interpolation
+		resizeImg(src, dst1, 1520, false);
+		//with interpolation
+		resizeImg(src, dst2, 1520, true);
+		imshow("input image", src);
+		imshow("resized image (without interpolation)", dst1);
+		imshow("resized image (with interpolation)", dst2);
+		waitKey();
+	}
+}
+
+
+void testVideoSequence()
+{
+	VideoCapture cap("Videos/rubic.avi"); // off-line video from file
+	//VideoCapture cap(0);	// live video from web cam
+	if (!cap.isOpened()) {
+		printf("Cannot open video capture device.\n");
+		waitKey(0);
+		return;
+	}
+
+	Mat edges;
+	Mat frame;
+	char c;
+
+	while (cap.read(frame))
+	{
+		Mat grayFrame;
+		cvtColor(frame, grayFrame, CV_BGR2GRAY);
+		imshow("source", frame);
+		imshow("gray", grayFrame);
+		c = cvWaitKey(0);  // waits a key press to advance to the next frame
+		if (c == 27) {
+			// press ESC to exit
+			printf("ESC pressed - capture finished\n");
+			break;  //ESC pressed
+		};
+	}
+}
+
+
+void testSnap()
+{
+	VideoCapture cap(0); // open the deafult camera (i.e. the built in web cam)
+	if (!cap.isOpened()) // openenig the video device failed
+	{
+		printf("Cannot open video capture device.\n");
+		return;
+	}
+
+	Mat frame;
+	char numberStr[256];
+	char fileName[256];
+
+	// video resolution
+	Size capS = Size((int)cap.get(CV_CAP_PROP_FRAME_WIDTH),
+		(int)cap.get(CV_CAP_PROP_FRAME_HEIGHT));
+
+	// Display window
+	const char* WIN_SRC = "Src"; //window for the source frame
+	namedWindow(WIN_SRC, CV_WINDOW_AUTOSIZE);
+	cvMoveWindow(WIN_SRC, 0, 0);
+
+	const char* WIN_DST = "Snapped"; //window for showing the snapped frame
+	namedWindow(WIN_DST, CV_WINDOW_AUTOSIZE);
+	cvMoveWindow(WIN_DST, capS.width + 10, 0);
+
+	char c;
+	int frameNum = -1;
+	int frameCount = 0;
+
+	for (;;)
+	{
+		cap >> frame; // get a new frame from camera
+		if (frame.empty())
+		{
+			printf("End of the video file\n");
+			break;
+		}
+
+		++frameNum;
+
+		imshow(WIN_SRC, frame);
+
+		c = cvWaitKey(10);  // waits a key press to advance to the next frame
+		if (c == 27) {
+			// press ESC to exit
+			printf("ESC pressed - capture finished");
+			break;  //ESC pressed
+		}
+		if (c == 115){ //'s' pressed - snapp the image to a file
+			frameCount++;
+			fileName[0] = NULL;
+			sprintf(numberStr, "%d", frameCount);
+			strcat(fileName, "Images/A");
+			strcat(fileName, numberStr);
+			strcat(fileName, ".bmp");
+			bool bSuccess = imwrite(fileName, frame);
+			if (!bSuccess)
+			{
+				printf("Error writing the snapped image\n");
+			}
+			else
+				imshow(WIN_DST, frame);
+		}
+	}
+
+}
+
+void MyCallBackFunc(int event, int x, int y, int flags, void* param)
+{
+	//More examples: http://opencvexamples.blogspot.com/2014/01/detect-mouse-clicks-and-moves-on-image.html
+	Mat* src = (Mat*)param;
+	if (event == CV_EVENT_LBUTTONDOWN)
+	{
+		printf("Pos(x,y): %d,%d  Color(RGB): %d,%d,%d\n",
+			x, y,
+			(int)(*src).at<Vec3b>(y, x)[2],
+			(int)(*src).at<Vec3b>(y, x)[1],
+			(int)(*src).at<Vec3b>(y, x)[0]);
+	}
+}
+
+void testMouseClick()
+{
+	Mat src;
+	// Read image from file 
+	char fname[MAX_PATH];
+	while (openFileDlg(fname))
+	{
+		src = imread(fname);
+		//Create a window
+		namedWindow("My Window", 1);
+
+		//set the callback function for any mouse event
+		setMouseCallback("My Window", MyCallBackFunc, &src);
+
+		//show the image
+		imshow("My Window", src);
+
+		// Wait until user press some key
+		waitKey(0);
+	}
+}
+
+/* Histogram display function - display a histogram using bars (simlilar to L3 / PI)
+Input:
+name - destination (output) window name
+hist - pointer to the vector containing the histogram values
+hist_cols - no. of bins (elements) in the histogram = histogram image width
+hist_height - height of the histogram image
+Call example:
+showHistogram ("MyHist", hist_dir, 255, 200);
+*/
+void showHistogram(const string& name, int* hist, const int  hist_cols, const int hist_height)
+{
+	Mat imgHist(hist_height, hist_cols, CV_8UC3, CV_RGB(255, 255, 255)); // constructs a white image
+
+	//computes histogram maximum
+	int max_hist = 0;
+	for (int i = 0; i<hist_cols; i++)
+		if (hist[i] > max_hist)
+			max_hist = hist[i];
+	double scale = 1.0;
+	scale = (double)hist_height / max_hist;
+	int baseline = hist_height - 1;
+
+	for (int x = 0; x < hist_cols; x++) {
+		Point p1 = Point(x, baseline);
+		Point p2 = Point(x, baseline - cvRound(hist[x] * scale));
+		line(imgHist, p1, p2, CV_RGB(255, 0, 255)); // histogram bins colored in magenta
+	}
+
+	imshow(name, imgHist);
+}
+
+int main()
+{
+	int op;
+	do
+	{
+		//system("cls");
+		destroyAllWindows();
+		printf("Menu:\n");
+		printf(" 1 - Open image\n");
+		printf(" 2 - Open BMP images from folder\n");
+		printf(" 3 - Resize image\n");
+		printf(" 4 - Process video\n");
+		printf(" 5 - Snap frame from live video\n");
+		printf(" 6 - Mouse callback demo\n");
+		printf(" 7 - Open BMP images as negative image from folder\n");
+		printf(" 8 - Open BMP images as a multiplicatively modified image from folder\n");
+		printf(" 9 - make an image");
+		printf(" 0 - Exit\n\n");
+		printf("Option: ");
+		scanf("%d", &op);
+		switch (op)
+		{
+		case 1:
+			testOpenImage();
+			break;
+		case 2:
+			testOpenImagesFld();
+			break;
+		case 3:
+			testResize();
+			break;
+		case 4:
+			testVideoSequence();
+			break;
+		case 5:
+			testSnap();
+			break;
+		case 6:
+			testMouseClick();
+			break;
+		case 7:
+			additive_change();
+			break;
+		case 8:
+			multiplicative_change();
+			break;
+		case 9:
+			make_image();
+			break;
+		case 10:
+			inverse1();
+			break;
+		case 11:
+			rotate();
+			break;
+		case 12:
+			transform_vec3b_to_3_gray_scale_images();
+			break;
+		case 13:
+			transform_vec3b_to_gray_scale();
+			break;
+		case 14:
+			grayscale_to_blach_and_white();
+			break;
+		case 15:
+			transform_vec3b_to_HSU();
+			break;
+		case 16:
+			Mat_<Vec3b> img = imread("Images/flowers_24bits.bmp", 1);
+			if (check_if_inside_image(img, 5, 111110))
+				printf("\nit is inside\n");
+			else
+				printf("\nit is not inside\n");
+			break;
+		}
+	} while (op != 0);
+	return 0;
+}
+
+
+/////mnist fashion https://www.kaggle.com/zalando-research/fashionmnist
