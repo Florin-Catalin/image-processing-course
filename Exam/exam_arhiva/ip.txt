@@ -1,0 +1,4 @@
+- stereomatching si calculul adancimii Z
+- o metoda pt detectarea muchiilor oblice (45 si 135 de grade)
+- se dadea o imagine cu niste celule, cu noise s&p. trebuiau precizati si detaliati toti
+ pasii/algoritmii aplicati pana sa ajung sa stiu aria si permetrul fiecarui obiect.

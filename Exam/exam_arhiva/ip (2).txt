@@ -1,0 +1,46 @@
+gr 3,4
+
+1. parameters of physical camera --------------------------------
+2. object labelling folosind ... ceva algoritm------------------------
+3. ... nu mai tin minte
+4. fourier low pass filter (cred)   --------------------------
+
+Median filter-----------------------------------------------------
+Smooth low-pass filter--------------------------------------------
+Edge detection using first order differential-----------------------
+Correlation problem from stereovision ------------------------------------
+
+1. Pinhole----------------------------------------------------
+2. Object labelling using the classical algorithm
+3. Thinning--------------------------------------------------
+4. Fourier High Pass filter --------------------------------
+
+5. Depth estimation for canonical camera ..sau ceva de genu-------------------------------------
+6. Noise filtering using the Gaussian method--------------------------------------
+7. Edge detection using Lagrange's ceva -----------------
+8. (nu imi amintesc)
+
+gr 1,2
+
+1. Properties of convolution----------------------------
+2. How to compute the Signal-to-Noise Ration--------------------
+3. Fourier Low Pass Filters-----------------------------
+4. Epipolar geometry--------------------------------
+Partial:
+1. Focusing objects-------------------------------
+2. 3D to 2D projection matrix--------------------------------------------
+3. Run-length coding -------------------------
+4. Compute Mean and variance using the histogram ------------------------
+
+1)Properties of the Fourier transform------------------------------------------
+2)3D stereo reconstruction problem--------------------------------------------
+3)High-pass filters in the Fourier space---------------------------------------
+4)Edge detection using the zero-crossing of the Laplacian ------------------------
+
+1. Histogram specification-----------------------------------------------------
+2. Computing the lens distortion
+3. Color models ------------------------------
+4. Projection matrix -------------------------------------
+
+
+

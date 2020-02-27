@@ -1,0 +1,8 @@
+1.stereovision basic elements
+  (geometry with parallel axes)
+2. simple geometric parameteters detection from projection
+3. contour tracking
+4. fourier transform
+5. detection of SNR ration from multiple images
+6. real space filtering.
+7. edge extraction - 0 crossing method.

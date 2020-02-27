@@ -1,0 +1,17 @@
+Randul 1
+
+- edge extraction using second order differentials
+- fourier transform and it's use in image processing
+- real space filtering
+- histogram equalization
+- intrinsic camera properties
+- 3D reconstruction, canonical stereo vision
+
+Randul 2
+
+- edge extraction using subpixel accuracy
+- convolution and it's use in image processing
+- frequency space filters
+- histogram specification
+- extrinsic camera properties
+- 3D to 2D projection matrix

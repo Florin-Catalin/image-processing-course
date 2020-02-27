@@ -1,0 +1,73 @@
+Posibile subiecte la IP, notate cele de anul acesta de la partial sau de la examen.
+
+C2
+Pinhole or perspective camera model
+Physical camera parameters - asta o dat la examen partial (vara)
+Camera frame -> image plane transformation
+Image plane transformation -> camera frame
+Direct mapping world camera - asta o dat la partial
+Inverse mapping camera world - asta o dat la partial
+Color imaging
+projection matrix (3D -> 2D)
+
+C3
+Global Thresholding
+Semi Thresholding
+Multilevel thresholding
+Variable thresholding 
+Threshold selection using mean and standard deviation - asta o dat la partial
+The Otsu Method - asta o dat la partial
+Threshold selection by best approximation with a two level image
+Simple Geometrical Properties - asta o dat la partial
+Projections
+Run-Length Encoding - asta o dat la examen pt partial (vara)
+
+C4
+Sequential labeling + exemplu
+Classical algorithm + exemplu - asta o dat la partial
+Contour tracing + multi contour
+Polygonal approximation
+
+C5
+Dilation + exemplu
+Erosion + exemplu - asta o dat la partial
+Opening and Closing + exemplu
+Hit-or-Miss Transform
+Boundary extraction + exemplu
+Region Filling + exemplu
+Extraction of Connected Components
+Thinning 
+
+C6
+Mean and Variance - 2 formule
+Histogram
+Image enhancement : histogram slide,histogram stretch/shrink, Gray level mapping, gamma correction - asta o dat anul trecut
+
+C7
+Fourier transform - definition
+Fourier propreties - asta o dat la examen pb 1 r2
+Convolution - definition
+Convolution - propreties - asta o dat la examen pb 1 r1
+
+C8
+singal to noise ration - o dat la examen pb  2 r1
+
+C9
+Low pass filters frequency domain- o dat la examen pb  3 r1
+Low pass filters spatial domain
+High pass filters frequency domain- o dat la examen pb 3 r2
+High pass filters spatial domain
+Non-linear filters
+
+C10-11
+Canny method
+2nd order Laplace zero crossings - o dat la examen pb 4 r2
+2nd order directional derivative in the direction of the gradient
+contour tracing
+sub-pixel accuracy edge detection
+
+C12
+camera parameters
+computation of Z
+3d reconstruction problem - o dat la examen pb  2 r2
+Epipolar geometry - epipolar line, essential, fundamental matrix - o dat la examen pb 4 r1

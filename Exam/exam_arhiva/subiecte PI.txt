@@ -1,0 +1,65 @@
+1. Sa se defineasca: 
+
+- parametri extrinseci ai camerei
+
+- distorsiunea radiala
+
+- dimensiunea efectiva a pixelului
+
+- deviatia standard a nivelelor de gri
+
+- histograma nivelelor de gri
+
+- convolutia
+
+- laplacianul unei imagini
+
+- filtrul median
+
+- axa de alungire
+ 
+
+
+2. Sa se descrie metoda Canny de detectie a muchiilor
+
+
+3. Problema: se da o imagine (aia cu 4 monede pe fond alb, de la laborator) afectata de zgomot
+ salt-and-pepper (purici negri si albi). Sa se descrie algoritmii necesari pentru a calcula 
+aria, centrul de masa si perimetrul fiecarui obiect.
+
+
+Rezolvarea mea: nu garantez ca-i corect.
+    
+1. Scos puricii cu filtru median
+    
+2. Binarizat imaginea
+    
+3. Etichetare obiecte
+   
+4. Arie si centru de masa
+    
+5. Determinat conturul obiectelor cu TRACER sau cu inchidere si calculat perimetru = 
+suma pixelilor de pe contur.
+ 
+
+
+
+//...........................
+
+
+
+
+1) Definiti urmatoarele notiuni:
+
+
+a) punct epipolar, plan epipolar, linie epipolara; (0.5p.)
+
+b) media si deviatia standard pentru o imagine grayscale; ( 0.5p.)
+
+c) SNR; (p. 0.5)
+
+d) skeletonul unui obiect. (p. 0.5)
+
+
+2) Detectarea muchiilor pe subpixel folosind derivata a doua. (7p.)
+

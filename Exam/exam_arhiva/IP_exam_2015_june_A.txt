@@ -1,0 +1,17 @@
+1. Pinhole camera with the properties (given): f, resolutionm principal point(u0, v0). Compute the projection (u,v) of a point P(X,Y,Z) from camera frame to image plane knowing its position (X=2m, Y=3m, Z=20m).
+
+2. Threshold approximation with a two-level image.
+
+3. Classical labeling algorithm.
+
+4. Problem: You are given a grayscale image with several letters on a white background. The letters are separate, but they are strike-through by thin lines. Find the number of letters tath enclose blank space (e.g. B, D, O, P).
+
+5. SNR for 2 images (f,g), where r = 100/101.
+
+6. Low pass filters in frequency domain.
+
+7.a) Real space non-linear filters.
+b) Given the intensities matrix of a grayscale image with 8 bits/pixel and size 4x4 pixels, compute the filtered image by applying a Median filter (3x3).
+
+8.a) Edge detection based on second derivatives.
+b) Compute a 5x5 mixed convolution kernel (Mean filter 3x3 + Laplace derivative kernel 3x3) that can be used for directly computing the second derivative of a smoothed image.

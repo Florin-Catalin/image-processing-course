@@ -1,0 +1,17 @@
+Randul 1
+
+1. Intrinsic & extrinsic parameters of a camera
+2. 3D reconstruction – canonical model
+3. Average thresholding with two level image (dupa metoda lui Otsu)
+4. Fourier transform in gray level images
+5. Threshold average filter
+6. Edge detection & extraction using gradients method
+
+Randul 2
+
+1. 3D to 2D projection matrix
+2. Stereovision matching
+3. Thresholding – Otsu’s method
+4. Convolution in gray level images
+5. Median filter
+6. Edge detection & extraction using zero-crossings

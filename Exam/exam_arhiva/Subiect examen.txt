@@ -1,0 +1,57 @@
+s4
+
+1.projection matrix
+
+2.histogram equalization
+
+3.dilation,erosion,region fill
+
+4.labeling algorithms
+
+5.fa kernel din kernel gauss de 3x3 si prewit de 3x3
+
+
+
+s3
+
+1. Camera perspective model.
+
+2. Best threshold approximation on bimodal greyscale images.
+
+3. Contour tracing.
+
+4. Color representation models.
+
+5. Give and explain an example of image thinning via morphological operations.
+
+
+
+
+s1
+
+1. Parametrii camerei(intrinsic&extrinsic)
+
+2. Color region segmentation (din ultimul curs)
+
+3. Traverse all contours of the image(algoritmul multi de la contur).
+
+4. Describe the methods of tresholding for turning a grayscale image into binary
+(global,semitresh,multi,median&std,otsu,dubla)
+
+5. Write a procedure that extracts information about the quality of the image(sau ceva de genu)
+
+
+
+s2
+
+
+1. Camera frame to image plane transformation
+
+2. Histogram specification
+
+3. Gray level image enhancement
+
+4. The Otsu's Thresholding Method
+
+5. Deduce the convolution kernel for performing an operation that filters out from an image 
+the details that are smaller than 2x2 pixels.
